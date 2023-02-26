@@ -15,6 +15,7 @@
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <commons.lang3.version>3.12.0</commons.lang3.version>
+        <javax.inject.version>1</javax.inject.version>
     </properties>
 
     <dependencies>
@@ -34,6 +35,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons.lang3.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>${javax.inject.version}</version>
         </dependency>
     </dependencies>
 </project>

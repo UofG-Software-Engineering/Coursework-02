@@ -1,8 +1,10 @@
 package uofg.se.group.service;
 
+import javax.inject.Singleton;
 import uofg.se.group.entity.CourseDirector;
 import uofg.se.group.entity.PTTDirector;
 import uofg.se.group.exception.DataNotFoundException;
+import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.CourseDirectorRepo;
 import uofg.se.group.repo.PTTDirectorRepo;
 
@@ -11,26 +13,11 @@ import uofg.se.group.repo.PTTDirectorRepo;
  * @Author Chris
  * @Date 2023/2/26
  */
+@Singleton
 public class CourseDirectorService extends BaseService<CourseDirector, CourseDirectorRepo>{
-    public CourseDirectorService(CourseDirectorRepo repo) {
-        super(repo);
+
+    public CourseDirectorService() {
+        super(Injector.getInstance(CourseDirectorRepo.class));
     }
 
-    // private static CourseDirectorService instance;
-    //
-    // public static CourseDirectorService getInstance() {
-    //     if (instance == null) {
-    //         instance = new CourseDirectorService();
-    //     }
-    //     return instance;
-    // }
-    //
-    // public CourseDirector findOne(String personId) {
-    //     CourseDirector pttDirector = CourseDirectorRepo.findOne(personId);
-    //     if (pttDirector == null) {
-    //         throw new DataNotFoundException(personId);
-    //     }
-    //
-    //     return pttDirector;
-    // }
 }

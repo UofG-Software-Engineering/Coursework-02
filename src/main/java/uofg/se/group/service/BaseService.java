@@ -1,7 +1,9 @@
 package uofg.se.group.service;
 
+import java.util.List;
 import uofg.se.group.entity.BaseEntity;
 import uofg.se.group.exception.DataNotFoundException;
+import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.BaseRepo;
 
 /**
@@ -11,8 +13,7 @@ import uofg.se.group.repo.BaseRepo;
  */
 public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>> {
 
-    protected final Repo repo;
-    protected BaseService<T, Repo> instance;
+    protected BaseRepo<T> repo;
 
     public BaseService(Repo repo) {
         this.repo = repo;
@@ -27,5 +28,7 @@ public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>
         return entity;
     }
 
-
+    public List<T> findAll() {
+        return repo.findAll();
+    }
 }

@@ -6,6 +6,7 @@ import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.entity.CourseDirector;
 import uofg.se.group.entity.PTTDirector;
 import uofg.se.group.entity.Requirement;
+import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.BaseRepo;
 import uofg.se.group.repo.CourseDirectorRepo;
 import uofg.se.group.repo.PTTDirectorRepo;
@@ -22,12 +23,13 @@ import uofg.se.group.service.RequirementService;
 
 public class RequirementTest {
 
-    private static final RequirementRepo requirementRepo = new RequirementRepo();
-    private static final PTTDirectorRepo pttDirectorRepo = new PTTDirectorRepo();
-    private static final CourseDirectorRepo courseDirectorRepo = new CourseDirectorRepo();
-    private final PTTDirectorService pttDirectorService = new PTTDirectorService(pttDirectorRepo);
-    private final CourseDirectorService courseDirectorService = new CourseDirectorService(courseDirectorRepo);
-    private final RequirementService requirementService = new RequirementService(requirementRepo, pttDirectorService, courseDirectorService);
+    private static final RequirementRepo requirementRepo = Injector.getInstance(RequirementRepo.class);
+    private static final PTTDirectorRepo pttDirectorRepo = Injector.getInstance(PTTDirectorRepo.class);
+    private static final CourseDirectorRepo courseDirectorRepo = Injector.getInstance(CourseDirectorRepo.class);
+    private final PTTDirectorService pttDirectorService = Injector.getInstance(PTTDirectorService.class);
+    private final CourseDirectorService courseDirectorService = Injector.getInstance(CourseDirectorService.class);
+    private static final RequirementService requirementService = Injector.getInstance(RequirementService.class);
+    // private final RequirementService requirementService = new RequirementService(requirementRepo, pttDirectorService, courseDirectorService);
 
     static {
         List<PTTDirector> pttDirectors = new ArrayList<>() {{
@@ -56,6 +58,12 @@ public class RequirementTest {
     public void findOne() {
         Requirement requirement = requirementService.findOne("1");
         System.out.println(requirement);
+    }
+
+    @Test
+    public void findAll() {
+        List<Requirement> requirements = requirementService.findAll();
+        System.out.println(requirements);
     }
 
     @Test

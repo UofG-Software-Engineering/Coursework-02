@@ -12,8 +12,6 @@ import uofg.se.group.entity.BaseEntity;
  */
 public abstract class BaseRepo<T extends BaseEntity> {
 
-    protected BaseRepo<T> instance;
-
     private final Set<T> entities;
 
     protected BaseRepo() {
@@ -26,6 +24,10 @@ public abstract class BaseRepo<T extends BaseEntity> {
 
     public T findOne(String id) {
         return entities.stream().filter(pttDirector -> pttDirector.getId().equals(id)).findFirst().orElse(null);
+    }
+
+    public List<T> findAll() {
+        return List.copyOf(entities);
     }
 
     public void save(T entity) {

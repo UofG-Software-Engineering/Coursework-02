@@ -1,12 +1,15 @@
 package uofg.se.group.service;
 
 import java.util.UUID;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
 import uofg.se.group.constant.PersonTypeEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.entity.CourseDirector;
 import uofg.se.group.entity.PTTDirector;
 import uofg.se.group.exception.PermissionErrorException;
+import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.PTTDirectorRepo;
 import uofg.se.group.repo.RequirementRepo;
 import uofg.se.group.entity.Requirement;
@@ -16,15 +19,14 @@ import uofg.se.group.entity.Requirement;
  * @Author Chris
  * @Date 2023/2/26
  */
+@Singleton
 public class RequirementService extends BaseService<Requirement, RequirementRepo>{
 
-    private final PTTDirectorService pttDirectorRepo;
-    private final CourseDirectorService courseDirectorService;
+    private final PTTDirectorService pttDirectorRepo = Injector.getInstance(PTTDirectorService.class);
+    private final CourseDirectorService courseDirectorService = Injector.getInstance(CourseDirectorService.class);
 
-    public RequirementService(RequirementRepo requirementRepo, PTTDirectorService pttDirectorService, CourseDirectorService courseDirectorService) {
-        super(requirementRepo);
-        this.pttDirectorRepo = pttDirectorService;
-        this.courseDirectorService = courseDirectorService;
+    public RequirementService() {
+        super(Injector.getInstance(RequirementRepo.class));
     }
 
     public void add(String personId, Requirement requirement) {
