@@ -9,23 +9,19 @@ import uofg.se.group.repo.PTTDirectorRepo;
  * @Author Chris
  * @Date 2023/2/26
  */
-public class PTTDirectorService extends BaseService<PTTDirector> {
+public class PTTDirectorService extends BaseService<PTTDirector, PTTDirectorRepo> {
 
     private static PTTDirectorService instance;
 
-    public static PTTDirectorService getInstance() {
+    public PTTDirectorService(PTTDirectorRepo PTTDirectorRepo) {
+        super(PTTDirectorRepo);
+    }
+
+    public static PTTDirectorService getInstance(PTTDirectorRepo pttDirectorRepo) {
         if (instance == null) {
-            instance = new PTTDirectorService();
+            instance = new PTTDirectorService(pttDirectorRepo);
         }
         return instance;
     }
 
-    public PTTDirector findOne(String personId) {
-        PTTDirector pttDirector = PTTDirectorRepo.findOne(personId);
-        if (pttDirector == null) {
-            throw new DataNotFoundException(personId);
-        }
-
-        return pttDirector;
-    }
 }

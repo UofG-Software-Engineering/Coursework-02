@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 /**
  * @Description
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
  * @Date 2023/2/26
  */
 @Data
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class BaseEntity {

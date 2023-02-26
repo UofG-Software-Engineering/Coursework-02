@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import uofg.se.group.constant.PersonTypeEnum;
 
 /**
@@ -13,10 +14,11 @@ import uofg.se.group.constant.PersonTypeEnum;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
-public class PTTDirector extends BasePerson{
+@ToString(callSuper = true)
+@AllArgsConstructor
+public class PTTDirector extends BasePerson {
 
-    public PTTDirector(String id, String name, PersonTypeEnum type) {
-        super(id, name, type);
+    public PTTDirector(String id, String name, PersonTypeEnum personType) {
+        super(id, name, personType);
     }
-
 }

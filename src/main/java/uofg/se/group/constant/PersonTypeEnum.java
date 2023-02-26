@@ -8,6 +8,8 @@ package uofg.se.group.constant;
 public enum PersonTypeEnum {
 
     PTT_DIRECTOR("PTTDirector"),
+    COURSE_DIRECTOR("CourseDirector"),
+    STAFF("Staff"),
     PLACEHOLDER("Placeholder");
 
     private final String type;

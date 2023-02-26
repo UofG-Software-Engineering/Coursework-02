@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import uofg.se.group.constant.PersonTypeEnum;
 
 /**
@@ -13,6 +15,7 @@ import uofg.se.group.constant.PersonTypeEnum;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
 public abstract class BasePerson extends BaseEntity{
@@ -20,9 +23,9 @@ public abstract class BasePerson extends BaseEntity{
     protected String name;
     protected PersonTypeEnum personType;
 
-    public BasePerson(String id, String name, PersonTypeEnum type) {
+    public BasePerson(String id, String name, PersonTypeEnum personType) {
         super(id);
         this.name = name;
-        this.personType = type;
+        this.personType = personType;
     }
 }

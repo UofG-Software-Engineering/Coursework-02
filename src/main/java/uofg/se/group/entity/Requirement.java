@@ -1,7 +1,11 @@
 package uofg.se.group.entity;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import uofg.se.group.constant.RequirementStatusEnum;
 
 /**
@@ -11,12 +15,12 @@ import uofg.se.group.constant.RequirementStatusEnum;
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
+@SuperBuilder
 public class Requirement extends BaseEntity{
+
+    private String courseId;
 
     private RequirementStatusEnum status;
 
-    public Requirement(String id, RequirementStatusEnum status) {
-        super(id);
-        this.status = status;
-    }
 }

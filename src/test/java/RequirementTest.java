@@ -5,6 +5,7 @@ import uofg.se.group.constant.PersonTypeEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.entity.PTTDirector;
 import uofg.se.group.entity.Requirement;
+import uofg.se.group.repo.BaseRepo;
 import uofg.se.group.repo.PTTDirectorRepo;
 import uofg.se.group.repo.RequirementRepo;
 import uofg.se.group.service.PTTDirectorService;
@@ -18,34 +19,36 @@ import uofg.se.group.service.RequirementService;
 
 public class RequirementTest {
 
-    private final PTTDirectorService pttDirectorService = PTTDirectorService.getInstance();
-    private final RequirementService requirementService = RequirementService.getInstance();
+    private static final RequirementRepo requirementRepo = new RequirementRepo();
+    private static final PTTDirectorRepo pttDirectorRepo = new PTTDirectorRepo();
+    private final PTTDirectorService pttDirectorService = new PTTDirectorService(pttDirectorRepo);
+    private final RequirementService requirementService = new RequirementService(requirementRepo, pttDirectorRepo);
 
     static {
         List<Requirement> requirements = new ArrayList<>() {{
-            add(new Requirement("1", RequirementStatusEnum.PENDING));
+            add(Requirement.builder().id("1").status(RequirementStatusEnum.PENDING).build());
         }};
-        RequirementRepo.create(requirements);
+        requirementRepo.addAll(requirements);
         List<PTTDirector> pttDirectors = new ArrayList<>() {{
             add(new PTTDirector("1", "Chris", PersonTypeEnum.PTT_DIRECTOR));
         }};
-        PTTDirectorRepo.addAll(pttDirectors);
+        pttDirectorRepo.addAll(pttDirectors);
     }
 
 
     @Test
-    public void test() {
-        Requirement requirement = RequirementRepo.findOne("1");
+    public void findOne() {
+        Requirement requirement = requirementService.findOne("1");
         System.out.println(requirement);
     }
 
     @Test
     public void approvalTest() {
-        Requirement requirement = RequirementRepo.findOne("1");
-        PTTDirector pttDirector = PTTDirectorRepo.findOne("1");
+        Requirement requirement = requirementService.findOne("1");
+        PTTDirector pttDirector = pttDirectorService.findOne("1");
         System.out.println(requirement);
         requirementService.approval(requirement.getId(), pttDirector.getId(), RequirementStatusEnum.APPROVED);
-        requirement = RequirementRepo.findOne("1");
+        requirement = requirementService.findOne("1");
         System.out.println(requirement);
     }
 }
