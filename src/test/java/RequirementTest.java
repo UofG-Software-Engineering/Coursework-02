@@ -6,6 +6,7 @@ import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.entity.CourseDirector;
 import uofg.se.group.entity.PTTDirector;
 import uofg.se.group.entity.Requirement;
+import uofg.se.group.inject.Container;
 import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.BaseRepo;
 import uofg.se.group.repo.CourseDirectorRepo;
@@ -23,15 +24,19 @@ import uofg.se.group.service.RequirementService;
 
 public class RequirementTest {
 
+    private static final Container container = new Container();
+
     private static final RequirementRepo requirementRepo = Injector.getInstance(RequirementRepo.class);
     private static final PTTDirectorRepo pttDirectorRepo = Injector.getInstance(PTTDirectorRepo.class);
     private static final CourseDirectorRepo courseDirectorRepo = Injector.getInstance(CourseDirectorRepo.class);
     private final PTTDirectorService pttDirectorService = Injector.getInstance(PTTDirectorService.class);
     private final CourseDirectorService courseDirectorService = Injector.getInstance(CourseDirectorService.class);
-    private static final RequirementService requirementService = Injector.getInstance(RequirementService.class);
+    private static final RequirementService requirementService;
     // private final RequirementService requirementService = new RequirementService(requirementRepo, pttDirectorService, courseDirectorService);
 
     static {
+        container.init();
+        requirementService = Injector.getInstance(RequirementService.class);
         List<PTTDirector> pttDirectors = new ArrayList<>() {{
             add(new PTTDirector("1", "Chris", PersonTypeEnum.PTT_DIRECTOR));
         }};

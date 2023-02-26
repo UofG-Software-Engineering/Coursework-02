@@ -1,16 +1,17 @@
 package uofg.se.group.service;
 
+import java.util.List;
 import java.util.UUID;
-import javax.inject.Inject;
 import javax.inject.Singleton;
 import org.apache.commons.lang3.StringUtils;
 import uofg.se.group.constant.PersonTypeEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.entity.CourseDirector;
 import uofg.se.group.entity.PTTDirector;
+import uofg.se.group.entity.Staff;
 import uofg.se.group.exception.PermissionErrorException;
+import uofg.se.group.inject.Autowired;
 import uofg.se.group.inject.Injector;
-import uofg.se.group.repo.PTTDirectorRepo;
 import uofg.se.group.repo.RequirementRepo;
 import uofg.se.group.entity.Requirement;
 
@@ -22,8 +23,11 @@ import uofg.se.group.entity.Requirement;
 @Singleton
 public class RequirementService extends BaseService<Requirement, RequirementRepo>{
 
-    private final PTTDirectorService pttDirectorRepo = Injector.getInstance(PTTDirectorService.class);
+    @Autowired
+    private PTTDirectorService pttDirectorService;
+
     private final CourseDirectorService courseDirectorService = Injector.getInstance(CourseDirectorService.class);
+
 
     public RequirementService() {
         super(Injector.getInstance(RequirementRepo.class));
@@ -44,7 +48,7 @@ public class RequirementService extends BaseService<Requirement, RequirementRepo
     }
 
     public void approval(String personId, String requirementId, RequirementStatusEnum requirementStatus) {
-        PTTDirector pttDirector = pttDirectorRepo.findOne(personId);
+        PTTDirector pttDirector = pttDirectorService.findOne(personId);
         PersonTypeEnum personType = pttDirector.getPersonType();
         if (PersonTypeEnum.PTT_DIRECTOR != personType) {
             throw new PermissionErrorException(PersonTypeEnum.PTT_DIRECTOR, "personId");
@@ -52,5 +56,10 @@ public class RequirementService extends BaseService<Requirement, RequirementRepo
         Requirement requirement = findOne(requirementId);
         requirement.setStatus(requirementStatus);
         repo.save(requirement);
+    }
+
+    public List<Staff> findStaff(String requirementId) {
+        Requirement requirement = findOne(requirementId);
+        return null;
     }
 }
