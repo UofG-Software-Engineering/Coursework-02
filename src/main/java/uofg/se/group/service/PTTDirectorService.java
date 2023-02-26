@@ -16,12 +16,4 @@ public class PTTDirectorService extends BaseService<PTTDirector, PTTDirectorRepo
     public PTTDirectorService(PTTDirectorRepo PTTDirectorRepo) {
         super(PTTDirectorRepo);
     }
-
-    public static PTTDirectorService getInstance(PTTDirectorRepo pttDirectorRepo) {
-        if (instance == null) {
-            instance = new PTTDirectorService(pttDirectorRepo);
-        }
-        return instance;
-    }
-
 }

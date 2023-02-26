@@ -20,7 +20,7 @@ import uofg.se.group.constant.RequirementStatusEnum;
 public class Requirement extends BaseEntity{
 
     private String courseId;
-
+    private String courseDirectorId;
     private RequirementStatusEnum status;
 
 }
