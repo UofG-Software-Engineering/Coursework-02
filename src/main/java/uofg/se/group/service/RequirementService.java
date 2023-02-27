@@ -23,9 +23,7 @@ import uofg.se.group.entity.Requirement;
 @Singleton
 public class RequirementService extends BaseService<Requirement, RequirementRepo>{
 
-    @Autowired
-    private PTTDirectorService pttDirectorService;
-
+    private final PTTDirectorService pttDirectorService = Injector.getInstance(PTTDirectorService.class);
     private final CourseDirectorService courseDirectorService = Injector.getInstance(CourseDirectorService.class);
 
 

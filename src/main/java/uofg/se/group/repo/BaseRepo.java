@@ -3,6 +3,8 @@ package uofg.se.group.repo;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import uofg.se.group.entity.BaseEntity;
 
 /**
@@ -30,7 +32,17 @@ public abstract class BaseRepo<T extends BaseEntity> {
         return List.copyOf(entities);
     }
 
+    public List<T> finAll(List<String> ids) {
+        return entities.stream().filter(entity -> ids.contains(entity.getId())).collect(Collectors.toList());
+    }
+
+    public List<String> findAllId() {
+        return entities.stream().map(BaseEntity::getId).collect(Collectors.toList());
+    }
     public void save(T entity) {
+        if (null == entity.getId()) {
+            entity.setId(UUID.randomUUID().toString());
+        }
         entities.add(entity);
     }
 }

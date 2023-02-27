@@ -32,4 +32,12 @@ public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>
     public List<T> findAll() {
         return repo.findAll();
     }
+
+    public List<T> findAll(List<String> ids) {
+        return repo.finAll(ids);
+    }
+
+    public List<String> findAllId() {
+        return repo.findAllId();
+    }
 }
