@@ -1,7 +1,6 @@
-package uofg.se.group.entity;
+package uofg.se.group.pojo.entity;
 
 import java.util.List;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -19,11 +18,12 @@ import uofg.se.group.constant.RequirementStatusEnum;
 @ToString(callSuper = true)
 @SuperBuilder
 @Component
-public class Requirement extends BaseEntity{
+public class Requirement extends BaseEntity {
 
     private String courseId;
     private String courseDirectorId;
-    private List<Skill> skills;
+    private String staffId;
+    private List<String> skillIds;
     private RequirementStatusEnum status;
 
 }

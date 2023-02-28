@@ -7,8 +7,5 @@ package uofg.se.group.constant;
  */
 public enum RequirementStatusEnum {
 
-    PENDING,
-    APPROVED,
-    REJECTED,
-    PLACEHOLDER
+    PENDING, APPROVED, REJECTED, PLACEHOLDER
 }

@@ -9,7 +9,7 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import uofg.se.group.constant.RoleEnum;
-import uofg.se.group.entity.Person;
+import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.repo.PersonRepo;
 import uofg.se.group.service.PersonService;
 
@@ -19,7 +19,7 @@ import uofg.se.group.service.PersonService;
  * @Description 非 Web 项目启动类
  */
 @SpringBootApplication
-public class NoWebApplication implements ApplicationRunner {
+public class Application implements ApplicationRunner {
 
     @Resource
     private PersonService personService;
@@ -27,11 +27,9 @@ public class NoWebApplication implements ApplicationRunner {
     private PersonRepo personRepo;
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder()
-                .sources(NoWebApplication.class)
+        new SpringApplicationBuilder().sources(Application.class)
                 // 指定非 web 模式
-                .web(WebApplicationType.NONE)
-                .run(args);
+                .web(WebApplicationType.NONE).run(args);
     }
 
     @Override
@@ -40,6 +38,6 @@ public class NoWebApplication implements ApplicationRunner {
             add(new Person("Chris", RoleEnum.PTT_DIRECTOR));
         }};
         personRepo.saveAll(people);
-       personService.findAll().forEach(System.out::println);
+        personService.findAll().forEach(System.out::println);
     }
 }

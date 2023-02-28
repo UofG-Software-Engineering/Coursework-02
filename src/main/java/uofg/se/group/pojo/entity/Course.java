@@ -1,4 +1,4 @@
-package uofg.se.group.entity;
+package uofg.se.group.pojo.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Component
-public class Course extends BaseEntity{
+public class Course extends BaseEntity {
 
     private String name;
     private String courseDirectorId;

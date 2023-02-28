@@ -1,4 +1,4 @@
-package uofg.se.group.entity;
+package uofg.se.group.pojo.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

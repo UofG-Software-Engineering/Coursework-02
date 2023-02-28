@@ -1,4 +1,4 @@
-package uofg.se.group.entity;
+package uofg.se.group.pojo.entity;
 
 import java.util.UUID;
 import lombok.AllArgsConstructor;
@@ -25,6 +25,7 @@ public abstract class BaseEntity {
     public int hashCode() {
         return id.hashCode();
     }
+
     public boolean equals(BaseEntity baseEntity) {
         return id.equals(baseEntity.getId());
     }
