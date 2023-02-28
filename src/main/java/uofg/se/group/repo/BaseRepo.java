@@ -17,7 +17,6 @@ import uofg.se.group.util.JsonWriter;
  */
 public abstract class BaseRepo<Entity extends BaseEntity> {
 
-    // TODO 分离数据层 查询逻辑下放至数据连接层
     protected String dataSourceFilePath;
     @Autowired
     private JsonReader<Entity> jsonReader;

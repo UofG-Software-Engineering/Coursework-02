@@ -4,6 +4,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.constant.RoleEnum;
+import uofg.se.group.exception.PermissionErrorException;
 import uofg.se.group.pojo.entity.Requirement;
 import uofg.se.group.pojo.vo.RequirementVo;
 import uofg.se.group.repo.CourseRepo;
@@ -24,8 +25,12 @@ public class RequirementService extends BaseService<Requirement, RequirementRepo
 
     public String add(Requirement requirement) {
         String courseDirectorId = requirement.getCourseDirectorId();
-        assert personRepo.existsByPersonIdAndRole(courseDirectorId, RoleEnum.COURSE_DIRECTOR);
-        assert courseRepo.existsByCourseIdAndCourseDirectorId(requirement.getCourseId(), courseDirectorId);
+        if (!personRepo.existsByPersonIdAndRole(courseDirectorId, RoleEnum.COURSE_DIRECTOR)) {
+            throw new PermissionErrorException(RoleEnum.COURSE_DIRECTOR, courseDirectorId);
+        }
+        if (!courseRepo.existsByCourseIdAndCourseDirectorId(requirement.getCourseId(), courseDirectorId)) {
+            throw new PermissionErrorException(RoleEnum.COURSE_DIRECTOR, courseDirectorId);
+        }
         requirement.setStatus(RequirementStatusEnum.PENDING);
 
         return repo.save(requirement);

@@ -14,11 +14,7 @@ import uofg.se.group.pojo.entity.Course;
 public class CourseRepo extends BaseRepo<Course> {
 
     public boolean existsByCourseIdAndCourseDirectorId(String courseId, String courseDirectorId) {
-        boolean isExisted = findAll().stream().anyMatch(
+        return findAll().stream().anyMatch(
                 course -> course.getId().equals(courseId) && course.getCourseDirectorId().equals(courseDirectorId));
-        if (!isExisted) {
-            throw new PermissionErrorException(RoleEnum.COURSE_DIRECTOR, courseDirectorId);
-        }
-        return true;
     }
 }

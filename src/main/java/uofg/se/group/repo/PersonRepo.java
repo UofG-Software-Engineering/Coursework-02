@@ -22,12 +22,7 @@ public class PersonRepo extends BaseRepo<Person> {
     private StaffSkillRepo staffSkillRepo;
 
     public boolean existsByPersonIdAndRole(String personId, RoleEnum role) {
-        boolean isExisted =
-                findAll().stream().anyMatch(person -> person.getId().equals(personId) && person.getRole() == role);
-        if (!isExisted) {
-            throw new PermissionErrorException(role, personId);
-        }
-        return true;
+        return findAll().stream().anyMatch(person -> person.getId().equals(personId) && person.getRole() == role);
     }
 
     public List<Person> findAllByRole(RoleEnum role) {
