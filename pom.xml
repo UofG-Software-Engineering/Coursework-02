@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.8</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <groupId>uofg.se.group</groupId>
     <artifactId>UofG-SE-Coursework</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -12,14 +19,26 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <IoC.version>1.0-SNAPSHOT</IoC.version>
         <junit.version>4.13.2</junit.version>
         <lombok.version>1.18.22</lombok.version>
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <javax.inject.version>1</javax.inject.version>
-        <hutool.all.version>5.8.0</hutool.all.version>
+        <hutool.all.version>5.8.11</hutool.all.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

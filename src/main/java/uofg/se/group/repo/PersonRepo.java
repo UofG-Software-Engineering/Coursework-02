@@ -1,7 +1,7 @@
 package uofg.se.group.repo;
 
 import org.springframework.stereotype.Component;
-import uofg.se.group.entity.Requirement;
+import uofg.se.group.entity.Person;
 
 /**
  * @Description
@@ -9,5 +9,5 @@ import uofg.se.group.entity.Requirement;
  * @Date 2023/2/26
  */
 @Component
-public class RequirementRepo extends BaseRepo<Requirement>{
+public class PersonRepo extends BaseRepo<Person> {
 }

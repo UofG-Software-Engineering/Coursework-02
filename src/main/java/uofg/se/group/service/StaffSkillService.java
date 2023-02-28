@@ -3,10 +3,10 @@ package uofg.se.group.service;
 import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
-import uofg.se.group.entity.Staff;
+import javax.annotation.Resource;
+import uofg.se.group.entity.Person;
 import uofg.se.group.entity.StaffSkill;
-import uofg.se.group.inject.Autowired;
-import uofg.se.group.inject.Injector;
+import uofg.se.group.repo.PersonRepo;
 import uofg.se.group.repo.StaffSkillRepo;
 
 /**
@@ -16,14 +16,12 @@ import uofg.se.group.repo.StaffSkillRepo;
  */
 public class StaffSkillService extends BaseService<StaffSkill, StaffSkillRepo>{
 
-    private final StaffService staffService = Injector.getInstance(StaffService.class);
-    public StaffSkillService() {
-        super(Injector.getInstance(StaffSkillRepo.class));
-    }
-
-    public List<Staff> findAllSuitableStaff(List<String> skillIds) {
+    @Resource
+    private PersonRepo personRepo;
+    // TODO 复杂查询下放至 repo
+    public List<Person> findAllSuitableStaff(List<String> skillIds) {
         List<StaffSkill> staffSkills = repo.findAll();
-        List<String> staffIds = staffService.findAllId();
+        List<String> staffIds = personRepo.findAllId();
         List<String> staffIdsFiltered = staffIds.stream().filter(staffId -> {
             List<String> staffSkillFiltered =
                     staffSkills.stream().filter(staffSkill -> staffSkill.getStaffId().equals(staffId))
@@ -32,6 +30,6 @@ public class StaffSkillService extends BaseService<StaffSkill, StaffSkillRepo>{
 
         }).collect(Collectors.toList());
 
-        return staffService.findAll(staffIdsFiltered);
+        return personRepo.findAll(staffIdsFiltered);
     }
 }

@@ -1,11 +1,12 @@
 package uofg.se.group.entity;
 
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.springframework.stereotype.Component;
 import uofg.se.group.constant.RequirementStatusEnum;
 
 /**
@@ -17,10 +18,12 @@ import uofg.se.group.constant.RequirementStatusEnum;
 @Data
 @ToString(callSuper = true)
 @SuperBuilder
+@Component
 public class Requirement extends BaseEntity{
 
     private String courseId;
     private String courseDirectorId;
+    private List<Skill> skills;
     private RequirementStatusEnum status;
 
 }

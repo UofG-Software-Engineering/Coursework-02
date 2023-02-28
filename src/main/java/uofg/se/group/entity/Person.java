@@ -3,9 +3,9 @@ package uofg.se.group.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
-import uofg.se.group.constant.PersonTypeEnum;
+import org.springframework.stereotype.Component;
+import uofg.se.group.constant.RoleEnum;
 
 /**
  * @Description
@@ -16,9 +16,10 @@ import uofg.se.group.constant.PersonTypeEnum;
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
-public class PTTDirector extends BasePerson {
+@Component
+public class Person extends BaseEntity {
 
-    public PTTDirector(String id, String name, PersonTypeEnum personType) {
-        super(id, name, personType);
-    }
+    protected String name;
+    protected RoleEnum role;
+
 }

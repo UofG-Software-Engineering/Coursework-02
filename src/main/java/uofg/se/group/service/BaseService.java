@@ -1,10 +1,9 @@
 package uofg.se.group.service;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import uofg.se.group.entity.BaseEntity;
 import uofg.se.group.exception.DataNotFoundException;
-import uofg.se.group.inject.Autowired;
-import uofg.se.group.inject.Injector;
 import uofg.se.group.repo.BaseRepo;
 
 /**
@@ -14,11 +13,8 @@ import uofg.se.group.repo.BaseRepo;
  */
 public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>> {
 
+    @Autowired
     protected Repo repo;
-
-    public BaseService(Repo repo) {
-        this.repo = repo;
-    }
 
     public T findOne(String id) {
         T entity = repo.findOne(id);
@@ -34,7 +30,7 @@ public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>
     }
 
     public List<T> findAll(List<String> ids) {
-        return repo.finAll(ids);
+        return repo.findAll(ids);
     }
 
     public List<String> findAllId() {

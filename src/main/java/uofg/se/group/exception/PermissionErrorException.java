@@ -1,6 +1,6 @@
 package uofg.se.group.exception;
 
-import uofg.se.group.constant.PersonTypeEnum;
+import uofg.se.group.constant.RoleEnum;
 
 /**
  * @Description
@@ -9,7 +9,7 @@ import uofg.se.group.constant.PersonTypeEnum;
  */
 public class PermissionErrorException extends RuntimeException {
 
-    public PermissionErrorException(PersonTypeEnum personType, String message) {
+    public PermissionErrorException(RoleEnum personType, String message) {
         super(message);
     }
 }

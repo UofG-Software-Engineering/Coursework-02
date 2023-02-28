@@ -5,7 +5,7 @@ package uofg.se.group.constant;
  * @Author Chris
  * @Date 2023/2/26
  */
-public enum PersonTypeEnum {
+public enum RoleEnum {
 
     PTT_DIRECTOR("PTTDirector"),
     COURSE_DIRECTOR("CourseDirector"),
@@ -14,7 +14,7 @@ public enum PersonTypeEnum {
 
     private final String type;
 
-    PersonTypeEnum(String type) {
+    RoleEnum(String type) {
         this.type = type;
     }
 

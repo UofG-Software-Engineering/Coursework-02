@@ -1,7 +1,5 @@
 package uofg.se.group.exception;
 
-import uofg.se.group.entity.Course;
-
 /**
  * @Description
  * @Author Chris
