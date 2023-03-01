@@ -2,7 +2,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import uofg.se.group.Application;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.pojo.entity.Person;
@@ -18,13 +22,16 @@ import uofg.se.group.service.RequirementService;
  * @Date 2023/2/26
  */
 
-@SpringBootTest
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { Application.class })
 public class RequirementTest {
 
     @Resource
     private PersonService personService;
     @Resource
     private RequirementService requirementService;
+
+    // TODO Requirement 测试重构
 
     @Test
     public void addAndFind() {

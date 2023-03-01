@@ -14,7 +14,17 @@ import uofg.se.group.repo.BaseRepo;
 public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>> {
 
     @Autowired
+    private T t;
+    @Autowired
     protected Repo repo;
+
+    public void save(T entity) {
+        repo.save(entity);
+    }
+
+    public void saveAll(List<T> entities) {
+        repo.saveAll(entities);
+    }
 
     public T findOne(String id) {
         T entity = repo.findOne(id);

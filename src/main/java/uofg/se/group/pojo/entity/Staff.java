@@ -1,24 +1,23 @@
 package uofg.se.group.pojo.entity;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.stereotype.Component;
 
 /**
  * @Description
  * @Author Chris
- * @Date 2023/2/26
+ * @Date 2023/3/1
  */
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Component
-public class Skill extends BaseEntity {
+public class Staff extends Person{
 
-    private String name;
+    private List<Skill> skills;
 }

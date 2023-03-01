@@ -1,4 +1,4 @@
-package uofg.se.group;
+package uofg.se.group.constant;
 
 /**
  * @Description
@@ -7,6 +7,6 @@ package uofg.se.group;
  */
 public class Constant {
 
-    // TODO
+    // TODO File path
     public static final String FILE_PATH = "src/main/resources/data.json";
 }

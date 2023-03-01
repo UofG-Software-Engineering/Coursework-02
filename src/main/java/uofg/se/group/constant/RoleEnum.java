@@ -7,15 +7,9 @@ package uofg.se.group.constant;
  */
 public enum RoleEnum {
 
-    PTT_DIRECTOR("PTTDirector"), COURSE_DIRECTOR("CourseDirector"), STAFF("Staff"), PLACEHOLDER("Placeholder");
+    PTT_DIRECTOR(),
+    COURSE_DIRECTOR(),
+    STAFF(),
+    PLACEHOLDER();
 
-    private final String type;
-
-    RoleEnum(String type) {
-        this.type = type;
-    }
-
-    public String getType() {
-        return type;
-    }
 }

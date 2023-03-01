@@ -1,8 +1,10 @@
 package uofg.se.group.pojo.entity;
 
 import java.util.List;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Component;
@@ -16,6 +18,8 @@ import uofg.se.group.constant.RequirementStatusEnum;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @SuperBuilder
 @Component
 public class Requirement extends BaseEntity {

@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.pojo.entity.BaseEntity;
 import uofg.se.group.util.JsonReader;
 import uofg.se.group.util.JsonWriter;
@@ -17,13 +19,14 @@ import uofg.se.group.util.JsonWriter;
  */
 public abstract class BaseRepo<Entity extends BaseEntity> {
 
-    protected String dataSourceFilePath;
-    @Autowired
-    private JsonReader<Entity> jsonReader;
-    @Autowired
+    protected final String dataSourceFilePath;
+    @Resource
+    protected JsonReader jsonReader;
+    @Resource
     private JsonWriter jsonWriter;
 
-    protected BaseRepo() {
+    protected BaseRepo(String dataSourceFilePath) {
+        this.dataSourceFilePath = dataSourceFilePath;
     }
 
     public String save(Entity entity) {
@@ -37,29 +40,31 @@ public abstract class BaseRepo<Entity extends BaseEntity> {
     }
 
     public void saveAll(List<Entity> entities) {
-        Set<Entity> originalEntities = new HashSet<>(jsonReader.read(dataSourceFilePath));
-        originalEntities.addAll(entities);
+        Set<Entity> originalEntities = new HashSet<>(findAll());
+        entities.forEach(entity -> {
+            if (null == entity.getId()) {
+                entity.setId(UUID.randomUUID().toString());
+            }
+            originalEntities.add(entity);
+        });
         jsonWriter.write(dataSourceFilePath, List.of(originalEntities));
     }
 
     public Entity findOne(String id) {
-        List<Entity> entities = jsonReader.read(dataSourceFilePath);
-
-        return entities.stream().filter(item -> item.getId().equals(id)).findFirst().orElse(null);
+        return findAll().stream()
+                .filter(item -> item.getId().equals(id))
+                .findFirst().orElse(null);
     }
 
-    public List<Entity> findAll() {
-        return jsonReader.read(dataSourceFilePath);
-    }
+    public abstract List<Entity> findAll();
 
     public List<Entity> findAllById(List<String> ids) {
-        List<Entity> entities = jsonReader.read(dataSourceFilePath);
+        List<Entity> entities = findAll();
         return entities.stream().filter(entity -> ids.contains(entity.getId())).collect(Collectors.toList());
     }
 
     public List<String> findAllId() {
-        List<Entity> entities = jsonReader.read(dataSourceFilePath);
-        return entities.stream().map(BaseEntity::getId).collect(Collectors.toList());
+        return findAll().stream().map(BaseEntity::getId).collect(Collectors.toList());
     }
 
 }

@@ -1,5 +1,8 @@
 package uofg.se.group.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class JsonWriter {
 
-    // TODO 读写模式
-    public void write(String filePath, List<?> list) {
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    public void write(String filePath, Object object) {
+        try {
+            objectMapper.writeValue(new File(filePath), object);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

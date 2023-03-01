@@ -1,7 +1,10 @@
 package uofg.se.group.pojo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,9 +15,13 @@ import org.springframework.stereotype.Component;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
+@ToString(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Component
 public class Course extends BaseEntity {
 
+    private String term;
     private String name;
     private String courseDirectorId;
 }
