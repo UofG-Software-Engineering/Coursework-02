@@ -37,8 +37,10 @@ public class JsonReader {
         }
         try {
             // Read the json file and convert it to a list of objects
-            return objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+            List<?> o = objectMapper.readValue(file, objectMapper.getTypeFactory().constructCollectionType(List.class, clazz));
+            return o;
         } catch (IOException e) {
+            // e.printStackTrace();
             return new ArrayList<>();
         }
     }

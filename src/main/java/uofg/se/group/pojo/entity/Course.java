@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Component;
 @ToString(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@SuperBuilder
 @Component
 public class Course extends BaseEntity {
 

@@ -23,7 +23,6 @@ import uofg.se.group.constant.RoleEnum;
 public class Person extends BaseEntity {
 
     protected String name;
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    protected RoleEnum role;
+    protected String role;
 
 }

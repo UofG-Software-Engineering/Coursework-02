@@ -4,7 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.pojo.entity.Requirement;
-import uofg.se.group.pojo.vo.RequirementVo;
+import uofg.se.group.pojo.vo.RequirementVO;
 import uofg.se.group.repo.RequirementRepo;
 
 /**
@@ -27,8 +27,8 @@ public class RequirementService extends BaseService<Requirement, RequirementRepo
         repo.updateStaffId(requirementId, staffId);
     }
 
-    public RequirementVo findOneVo(String requirementId) {
-        return repo.findOneVo(requirementId);
+    public RequirementVO findOneVO(String requirementId) {
+        return repo.findOneVO(requirementId);
     }
 
     public List<Requirement> findAllByStatus(RequirementStatusEnum status) {

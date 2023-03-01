@@ -35,7 +35,7 @@ public abstract class BaseRepo<Entity extends BaseEntity> {
         }
         Set<Entity> entities = new HashSet<>(findAll());
         entities.add(entity);
-        jsonWriter.write(dataSourceFilePath, List.of(entities));
+        jsonWriter.write(dataSourceFilePath, entities);
         return entity.getId();
     }
 
@@ -47,7 +47,7 @@ public abstract class BaseRepo<Entity extends BaseEntity> {
             }
             originalEntities.add(entity);
         });
-        jsonWriter.write(dataSourceFilePath, List.of(originalEntities));
+        jsonWriter.write(dataSourceFilePath, originalEntities);
     }
 
     public Entity findOne(String id) {

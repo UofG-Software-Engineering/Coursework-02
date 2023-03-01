@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
+import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.pojo.entity.Course;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Requirement;
@@ -25,7 +26,7 @@ public class SkillRepo extends BaseRepo<Skill> {
     @Resource
     private StaffSkillRepo staffSkillRepo;
     public SkillRepo() {
-        super("data/skill.json");
+        super(EntityEnum.SKILL.getDataSourceFilePath());
     }
 
     public List<Skill> findAllByStaffId(String staffId) {
@@ -34,6 +35,9 @@ public class SkillRepo extends BaseRepo<Skill> {
         return findAllById(skillIds);
     }
 
+    public List<Skill> findAllByNameLike(String name) {
+        return findAll().stream().filter(skill -> skill.getName().contains(name)).collect(Collectors.toList());
+    }
     @Override
     public List<Skill> findAll() {
         return (List<Skill>) jsonReader.read(dataSourceFilePath, Skill.class);

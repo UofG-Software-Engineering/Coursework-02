@@ -5,7 +5,6 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.pojo.entity.Person;
-import uofg.se.group.pojo.entity.Skill;
 import uofg.se.group.pojo.entity.Staff;
 import uofg.se.group.pojo.entity.StaffSkill;
 import uofg.se.group.repo.PersonRepo;
@@ -25,12 +24,12 @@ public class PersonService extends BaseService<Person, PersonRepo> {
     @Resource
     private SkillRepo skillRepo;
 
-    public String addStaffSkill(String staffId, String skillId) {
-        return staffSkillRepo.save(new StaffSkill(staffId, skillId));
+    public void addStaffSkill(String staffId, List<String> skillIds) {
+        staffSkillRepo.addStaffSkill(staffId, skillIds);
     }
 
-    public Staff findStaff(String staffId) {
-        return repo.findStaff(staffId);
+    public Staff findOneStaff(String staffId) {
+        return repo.findOneStaff(staffId);
     }
 
     public List<Person> findAllByRole(RoleEnum role) {

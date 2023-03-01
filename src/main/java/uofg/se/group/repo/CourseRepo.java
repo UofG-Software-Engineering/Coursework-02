@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
+import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.pojo.entity.Course;
 import uofg.se.group.pojo.entity.Person;
 
@@ -19,7 +20,7 @@ import uofg.se.group.pojo.entity.Person;
 public class CourseRepo extends BaseRepo<Course> {
 
     public CourseRepo() {
-        super("data/course.json");
+        super(EntityEnum.COURSE.getDataSourceFilePath());
     }
 
     public boolean existsByCourseIdAndCourseDirectorId(String courseId, String courseDirectorId) {

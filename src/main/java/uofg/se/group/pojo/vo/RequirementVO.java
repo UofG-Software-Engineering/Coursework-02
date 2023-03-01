@@ -15,7 +15,7 @@ import uofg.se.group.pojo.entity.Skill;
  */
 @Builder
 @ToString
-public class RequirementVo {
+public class RequirementVO {
 
     private String id;
     private Course course;

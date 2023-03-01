@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
+import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.exception.PermissionErrorException;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Requirement;
-import uofg.se.group.pojo.vo.RequirementVo;
+import uofg.se.group.pojo.vo.RequirementVO;
 
 /**
  * @Description
@@ -27,7 +28,7 @@ public class RequirementRepo extends BaseRepo<Requirement> {
     private SkillRepo skillRepo;
 
     public RequirementRepo() {
-        super("data/requirement.json");
+        super(EntityEnum.Requirement.getDataSourceFilePath());
     }
 
     public String add(Requirement requirement) {
@@ -42,9 +43,9 @@ public class RequirementRepo extends BaseRepo<Requirement> {
 
         return save(requirement);
     }
-    public RequirementVo findOneVo(String requirementId) {
+    public RequirementVO findOneVO(String requirementId) {
         Requirement requirement = findOne(requirementId);
-        return RequirementVo.builder().id(requirement.getId()).course(courseRepo.findOne(requirement.getCourseId()))
+        return RequirementVO.builder().id(requirement.getId()).course(courseRepo.findOne(requirement.getCourseId()))
                 .CourseDirector(personRepo.findOne(requirement.getCourseDirectorId()))
                 .staff(personRepo.findOne(requirement.getStaffId()))
                 .skills(skillRepo.findAllById(requirement.getSkillIds())).status(requirement.getStatus()).build();
@@ -72,6 +73,6 @@ public class RequirementRepo extends BaseRepo<Requirement> {
     }
     @Override
     public List<Requirement> findAll() {
-        return (List<Requirement>) jsonReader.read(dataSourceFilePath, Person.class);
+        return (List<Requirement>) jsonReader.read(dataSourceFilePath, Requirement.class);
     }
 }

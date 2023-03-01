@@ -6,7 +6,5 @@ package uofg.se.group.constant;
  * @Date 2023/2/28
  */
 public class Constant {
-
-    // TODO File path
-    public static final String FILE_PATH = "src/main/resources/data.json";
+    public static final String DATA_DIR_PATH = "data";
 }

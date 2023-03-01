@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
+import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Skill;
 import uofg.se.group.pojo.entity.StaffSkill;
@@ -20,9 +21,12 @@ import uofg.se.group.pojo.entity.StaffSkill;
 @Component
 public class StaffSkillRepo extends BaseRepo<StaffSkill> {
     public StaffSkillRepo() {
-        super("data/staffSkill.json");
+        super(EntityEnum.STAFF_SKILL.getDataSourceFilePath());
     }
 
+    public void addStaffSkill(String staffId, List<String> skillIds) {
+        skillIds.forEach(skillId -> save(new StaffSkill(staffId, skillId)));
+    }
     public List<String> findAllByStaffId(String staffId) {
         return findAll().stream().filter(staffSkill -> staffSkill.getStaffId().equals(staffId)).map(StaffSkill::getSkillId).collect(
                 Collectors.toList());

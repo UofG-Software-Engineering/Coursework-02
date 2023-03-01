@@ -1,18 +1,14 @@
 package uofg.se.group.repo;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
+import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.constant.RoleEnum;
-import uofg.se.group.pojo.entity.Course;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Skill;
 import uofg.se.group.pojo.entity.Staff;
@@ -31,14 +27,14 @@ public class PersonRepo extends BaseRepo<Person> {
     private StaffSkillRepo staffSkillRepo;
     @Resource SkillRepo skillRepo;
     public PersonRepo() {
-        super("data/person.json");
+        super(EntityEnum.PERSON.getDataSourceFilePath());
     }
 
     public boolean existsByPersonIdAndRole(String personId, RoleEnum role) {
-        return findAll().stream().anyMatch(person -> person.getId().equals(personId) && person.getRole() == role);
+        return findAll().stream().anyMatch(person -> person.getId().equals(personId) && StringUtils.equals(person.getRole(), role.getValue()));
     }
 
-    public Staff findStaff(String staffId) {
+    public Staff findOneStaff(String staffId) {
         Person person = findOne(staffId);
         List<String> skillIds = staffSkillRepo.findAllByStaffId(staffId);
         List<Skill> skills = skillRepo.findAllById(skillIds);
@@ -49,8 +45,8 @@ public class PersonRepo extends BaseRepo<Person> {
     }
 
     public List<Person> findAllByRole(RoleEnum role) {
-            return findAll().stream()
-                .filter(person -> person.getRole() == role)
+        return findAll().stream()
+                .filter(person -> StringUtils.equals(person.getRole(), role.getValue()))
                 .collect(Collectors.toList());
     }
 
