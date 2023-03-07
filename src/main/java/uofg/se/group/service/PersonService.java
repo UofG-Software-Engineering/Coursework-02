@@ -21,8 +21,6 @@ public class PersonService extends BaseService<Person, PersonRepo> {
 
     @Resource
     private StaffSkillRepo staffSkillRepo;
-    @Resource
-    private SkillRepo skillRepo;
 
     public void addStaffSkill(String staffId, List<String> skillIds) {
         staffSkillRepo.addStaffSkill(staffId, skillIds);

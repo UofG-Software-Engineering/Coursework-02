@@ -45,8 +45,6 @@ public class RequirementTest {
     @Resource
     private SkillService skillService;
 
-    // TODO Requirement 测试重构
-
     @Before
     public void init() {
         // Delete all data

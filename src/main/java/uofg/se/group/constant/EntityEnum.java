@@ -11,6 +11,7 @@ public enum EntityEnum {
     Requirement("requirement.json"),
     SKILL("skill.json"),
     STAFF_SKILL("staffSkill.json"),
+    TRAINING("training.json"),
     PLACEHOLDER("");
 
     private final String dataSourceFilePath;
