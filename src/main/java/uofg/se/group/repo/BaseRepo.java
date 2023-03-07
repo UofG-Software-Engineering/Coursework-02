@@ -1,7 +1,11 @@
 package uofg.se.group.repo;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -30,24 +34,22 @@ public abstract class BaseRepo<Entity extends BaseEntity> {
     }
 
     public String save(Entity entity) {
-        if (null == entity.getId()) {
-            entity.setId(UUID.randomUUID().toString());
-        }
-        Set<Entity> entities = new HashSet<>(findAll());
-        entities.add(entity);
-        jsonWriter.write(dataSourceFilePath, entities);
+        // Convert list to map to avoid duplicate
+        Map<String, Entity> entities = findAll().stream().collect(Collectors.toMap(BaseEntity::getId, item -> item));
+        config(entity);
+        entities.put(entity.getId(), entity);
+        jsonWriter.write(dataSourceFilePath, entities.values());
         return entity.getId();
     }
 
     public void saveAll(List<Entity> entities) {
-        Set<Entity> originalEntities = new HashSet<>(findAll());
+        // Convert list to map to avoid duplicate
+        Map<String, Entity> originalEntities = findAll().stream().collect(Collectors.toMap(BaseEntity::getId, item -> item));
         entities.forEach(entity -> {
-            if (null == entity.getId()) {
-                entity.setId(UUID.randomUUID().toString());
-            }
-            originalEntities.add(entity);
+            config(entity);
+            originalEntities.put(entity.getId(), entity);
         });
-        jsonWriter.write(dataSourceFilePath, originalEntities);
+        jsonWriter.write(dataSourceFilePath, originalEntities.values());
     }
 
     public Entity findOne(String id) {
@@ -65,6 +67,17 @@ public abstract class BaseRepo<Entity extends BaseEntity> {
 
     public List<String> findAllId() {
         return findAll().stream().map(BaseEntity::getId).collect(Collectors.toList());
+    }
+
+    // Config entity before save
+    private void config(Entity entity) {
+        if (null == entity.getId()) {
+            entity.setId(UUID.randomUUID().toString());
+        }
+        if (null == entity.getCreatedTime()) {
+            entity.setCreatedTime(LocalDateTime.now().toString());
+        }
+        entity.setUpdatedTime(LocalDateTime.now().toString());
     }
 
 }

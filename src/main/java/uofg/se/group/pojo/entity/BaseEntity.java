@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @Description
@@ -18,12 +19,7 @@ import lombok.experimental.SuperBuilder;
 public abstract class BaseEntity {
 
     protected String id;
+    protected String createdTime;
+    protected String updatedTime;
 
-    public int hashCode() {
-        return id.hashCode();
-    }
-
-    public boolean equals(BaseEntity baseEntity) {
-        return id.equals(baseEntity.getId());
-    }
 }

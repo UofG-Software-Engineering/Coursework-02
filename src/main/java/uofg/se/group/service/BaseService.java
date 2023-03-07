@@ -18,8 +18,8 @@ public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>
     @Autowired
     protected Repo repo;
 
-    public void save(T entity) {
-        repo.save(entity);
+    public String save(T entity) {
+         return repo.save(entity);
     }
 
     public void saveAll(List<T> entities) {

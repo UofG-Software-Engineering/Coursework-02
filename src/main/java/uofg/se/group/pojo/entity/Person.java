@@ -14,7 +14,6 @@ import uofg.se.group.constant.RoleEnum;
  * @Author Chris
  * @Date 2023/2/26
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
@@ -25,4 +24,16 @@ public class Person extends BaseEntity {
     protected String name;
     protected String role;
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Person) {
+            return id.equals(((Person) obj).getId());
+        }
+        return false;
+    }
 }

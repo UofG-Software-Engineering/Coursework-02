@@ -73,7 +73,6 @@ public class RequirementTest {
             add(new Skill("Python"));
         }};
         skillService.saveAll(skills);
-        List<Skill> all = skillService.findAll();
         List<Person> courseDirectors = personService.findAllByRole(RoleEnum.COURSE_DIRECTOR);
         List<Course> courses = new ArrayList<>() {{
             add(new Course("2024-1", "Java Programming Design", courseDirectors.get(0).getId()));
@@ -85,35 +84,39 @@ public class RequirementTest {
 
     @Test
     public void addRequirement() {
-        String requirementId = requirementService.add(
-                // TODO
-                Requirement.builder().courseId("1").courseDirectorId("1").skillIds(new ArrayList<>() {{
-                    add("1");
-                    add("2");
+        Course course = courseRepo.findAll().get(0);
+        String courseId = course.getId();
+        String courseDirectorId = course.getCourseDirectorId();
+        String skill1Id  = skillService.findAll().get(0).getId();
+        String skill2Id = skillService.save(new Skill("Web Development"));
+        String requirementId = requirementService.save(
+                Requirement.builder()
+                        .courseId(courseId)
+                        .courseDirectorId(courseDirectorId)
+                        .skillIds(new ArrayList<>() {{
+                    add(skill1Id);
+                    add(skill2Id);
                 }}).build());
-        Requirement requirement = requirementService.findOne(requirementId);
-        System.out.println(requirement);
+        RequirementVO requirementVO = requirementService.findOneVO(requirementId);
+        log.info("requirementVO: {}", requirementVO);
     }
 
     @Test
     public void approvalRequirement() {
+        addRequirement();
         Requirement requirement = requirementService.findAllByStatus(RequirementStatusEnum.PENDING).get(0);
         Person person = personService.findAllByRole(RoleEnum.PTT_DIRECTOR).get(0);
+
         requirementService.approval(requirement.getId(), person.getId(), RequirementStatusEnum.APPROVED);
         requirement = requirementService.findOne(requirement.getId());
         System.out.println(requirement);
     }
 
-    @Test
-    public void findRequirement() {
-        // TODO findAllByCourseId & RequirementVO
-
-    }
 
     @Test
     public void addStaffSkill() {
-        List<Skill> skills = skillService.findAll();
-        skills = skillService.findAllByNameLike("Java");
+        List<Skill> skills = skillService.findAllByNameLike("Java");
+        skills.addAll(skillService.findAllByNameLike("Web Development"));
         Person staff = personService.findAllByRole(RoleEnum.STAFF).get(0);
         personService.addStaffSkill(staff.getId(), skills.stream().map(Skill::getId).collect(Collectors.toList()));
         staff = personService.findOneStaff(staff.getId());
@@ -122,14 +125,14 @@ public class RequirementTest {
 
     @Test
     public void assignSuitableStaff() {
+        approvalRequirement();
+        addStaffSkill();
         // find suitable staff
         Requirement requirement = requirementService.findAllByStatus(RequirementStatusEnum.APPROVED).get(0);
         List<Person> persons = personService.findAllSuitableStaff(requirement.getSkillIds());
         requirementService.assignStaff(requirement.getId(), persons.get(0).getId());
         requirement = requirementService.findOne(requirement.getId());
-        System.out.println(requirement);
-        RequirementVO requirementVo = requirementService.findOneVO(requirement.getId());
-        System.out.println(requirementVo);
-        // TODO assign staff
+        RequirementVO requirementVO = requirementService.findOneVO(requirement.getId());
+        log.info("requirementVO: {}", requirementVO);
     }
 }

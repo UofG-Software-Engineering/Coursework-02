@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,7 +15,6 @@ import org.springframework.stereotype.Component;
  * @Date 2023/2/26
  */
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
@@ -26,4 +26,18 @@ public class Course extends BaseEntity {
     private String term;
     private String name;
     private String courseDirectorId;
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Course) {
+            Course course = (Course) obj;
+            return StringUtils.equals(id, course.getId());
+        }
+        return false;
+    }
 }

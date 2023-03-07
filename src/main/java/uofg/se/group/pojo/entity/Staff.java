@@ -12,7 +12,6 @@ import lombok.ToString;
  * @Author Chris
  * @Date 2023/3/1
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
@@ -20,4 +19,17 @@ import lombok.ToString;
 public class Staff extends Person{
 
     private List<Skill> skills;
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Staff) {
+            return id.equals(((Staff) obj).getId());
+        }
+        return false;
+    }
 }

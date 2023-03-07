@@ -15,12 +15,13 @@ import uofg.se.group.repo.RequirementRepo;
 @Component
 public class RequirementService extends BaseService<Requirement, RequirementRepo> {
 
-    public String add(Requirement requirement) {
-        return repo.add(requirement);
+    public String save(Requirement requirement) {
+        requirement.setStatus(RequirementStatusEnum.PENDING);
+        return repo.save(requirement);
     }
 
-    public void approval(String personId, String requirementId, RequirementStatusEnum status) {
-        repo.updateStatus(personId, requirementId, status);
+    public void approval(String requirementId, String personId, RequirementStatusEnum status) {
+        repo.updateStatus(requirementId, personId, status);
     }
 
     public void assignStaff(String requirementId, String staffId) {

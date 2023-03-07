@@ -64,7 +64,7 @@ public class RequirementRepo extends BaseRepo<Requirement> {
         save(requirement);
     }
 
-    public void updateStatus(String personId, String requirementId, RequirementStatusEnum status) {
+    public void updateStatus(String requirementId, String personId, RequirementStatusEnum status) {
         assert personRepo.existsByPersonIdAndRole(personId, RoleEnum.PTT_DIRECTOR);
         Requirement requirement = findOne(requirementId);
         requirement.setStatus(status);

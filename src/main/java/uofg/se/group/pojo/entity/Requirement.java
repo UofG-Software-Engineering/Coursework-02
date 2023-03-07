@@ -15,7 +15,6 @@ import uofg.se.group.constant.RequirementStatusEnum;
  * @Author Chris
  * @Date 2023/2/26
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @AllArgsConstructor
@@ -30,4 +29,16 @@ public class Requirement extends BaseEntity {
     private List<String> skillIds;
     private RequirementStatusEnum status;
 
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Requirement) {
+            return id.equals(((Requirement) obj).getId());
+        }
+        return false;
+    }
 }
