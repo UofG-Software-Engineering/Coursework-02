@@ -16,8 +16,8 @@ import uofg.se.group.pojo.entity.BaseEntity;
 import uofg.se.group.pojo.entity.Skill;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Json file reader
+ * @Author Xiaohui Yu
  * @Date 2023/2/28
  */
 @Component

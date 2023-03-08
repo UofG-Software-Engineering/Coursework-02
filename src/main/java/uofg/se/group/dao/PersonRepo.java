@@ -1,8 +1,7 @@
-package uofg.se.group.repo;
+package uofg.se.group.dao;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
@@ -16,8 +15,8 @@ import uofg.se.group.pojo.entity.StaffSkill;
 import uofg.se.group.util.PersonMapper;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Person repository
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Component

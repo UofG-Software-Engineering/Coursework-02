@@ -9,8 +9,8 @@ import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Skill;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Teaching Requirement Value Object
+ * @Author Xiaohui Yu
  * @Date 2023/2/28
  */
 @Builder

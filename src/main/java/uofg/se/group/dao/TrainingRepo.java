@@ -1,17 +1,16 @@
-package uofg.se.group.repo;
+package uofg.se.group.dao;
 
 import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 import uofg.se.group.constant.EntityEnum;
-import uofg.se.group.pojo.entity.Course;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Training;
 import uofg.se.group.pojo.vo.TrainingVO;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Training repository
+ * @Author Xiaohui Yu
  * @Date 2023/3/7
  */
 @Component

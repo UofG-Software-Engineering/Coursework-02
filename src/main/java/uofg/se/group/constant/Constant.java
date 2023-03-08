@@ -1,8 +1,8 @@
 package uofg.se.group.constant;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Constant class
+ * @Author Xiaohui Yu
  * @Date 2023/2/28
  */
 public class Constant {

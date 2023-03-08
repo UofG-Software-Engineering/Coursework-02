@@ -3,11 +3,11 @@ package uofg.se.group.service;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import uofg.se.group.pojo.entity.Skill;
-import uofg.se.group.repo.SkillRepo;
+import uofg.se.group.dao.SkillRepo;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Skill service
+ * @Author Xiaohui Yu
  * @Date 2023/3/1
  */
 @Component

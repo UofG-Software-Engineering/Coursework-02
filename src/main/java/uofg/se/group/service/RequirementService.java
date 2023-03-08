@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.pojo.entity.Requirement;
 import uofg.se.group.pojo.vo.RequirementVO;
-import uofg.se.group.repo.RequirementRepo;
+import uofg.se.group.dao.RequirementRepo;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Teaching requirement service
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Component

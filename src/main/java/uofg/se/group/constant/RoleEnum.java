@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Person role Enum
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 public enum RoleEnum {

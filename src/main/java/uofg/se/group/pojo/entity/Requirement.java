@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 import uofg.se.group.constant.RequirementStatusEnum;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Teaching requirement entity
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Data

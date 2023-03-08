@@ -22,15 +22,15 @@ import uofg.se.group.pojo.entity.Skill;
 import uofg.se.group.pojo.entity.Training;
 import uofg.se.group.pojo.vo.RequirementVO;
 import uofg.se.group.pojo.vo.TrainingVO;
-import uofg.se.group.repo.CourseRepo;
+import uofg.se.group.dao.CourseRepo;
 import uofg.se.group.service.PersonService;
 import uofg.se.group.service.RequirementService;
 import uofg.se.group.service.SkillService;
 import uofg.se.group.service.TrainingService;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Implement test
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 

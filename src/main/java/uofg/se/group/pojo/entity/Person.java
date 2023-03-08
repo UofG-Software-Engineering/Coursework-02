@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import uofg.se.group.constant.RoleEnum;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Person entity
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Data

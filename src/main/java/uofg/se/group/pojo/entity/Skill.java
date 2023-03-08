@@ -8,8 +8,8 @@ import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Skill entity
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Data

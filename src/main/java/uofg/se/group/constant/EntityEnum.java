@@ -1,8 +1,8 @@
 package uofg.se.group.constant;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Entity Enum
+ * @Author Xiaohui Yu
  * @Date 2023/3/1
  */
 public enum EntityEnum {

@@ -1,8 +1,8 @@
 package uofg.se.group.exception;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Data not found exception
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 public class DataNotFoundException extends RuntimeException {

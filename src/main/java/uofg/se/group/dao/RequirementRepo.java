@@ -1,4 +1,4 @@
-package uofg.se.group.repo;
+package uofg.se.group.dao;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -8,13 +8,12 @@ import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.exception.PermissionErrorException;
-import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Requirement;
 import uofg.se.group.pojo.vo.RequirementVO;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Teaching requirement repository
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Component

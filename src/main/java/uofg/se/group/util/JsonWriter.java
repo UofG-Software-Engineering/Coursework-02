@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Json file writer
+ * @Author Xiaohui Yu
  * @Date 2023/2/28
  */
 @Component

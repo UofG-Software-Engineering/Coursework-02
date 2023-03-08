@@ -1,19 +1,13 @@
-package uofg.se.group.repo;
+package uofg.se.group.dao;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
 import uofg.se.group.constant.EntityEnum;
 import uofg.se.group.pojo.entity.Course;
-import uofg.se.group.pojo.entity.Person;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Course repository
+ * @Author Xiaohui Yu
  * @Date 2023/2/28
  */
 @Component

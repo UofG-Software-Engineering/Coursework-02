@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Staff entity
+ * @Author Xiaohui Yu
  * @Date 2023/3/1
  */
 @Data

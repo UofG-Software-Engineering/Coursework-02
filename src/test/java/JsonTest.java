@@ -12,8 +12,8 @@ import uofg.se.group.util.JsonReader;
 import uofg.se.group.util.JsonWriter;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Json writer and reader test
+ * @Author Xiaohui Yu
  * @Date 2023/3/1
  */
 @RunWith(SpringJUnit4ClassRunner.class)

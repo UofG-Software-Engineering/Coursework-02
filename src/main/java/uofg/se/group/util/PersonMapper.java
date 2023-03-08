@@ -6,8 +6,8 @@ import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Staff;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Person mapper
+ * @Author Xiaohui Yu
  * @Date 2023/3/1
  */
 @Mapper

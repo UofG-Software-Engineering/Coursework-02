@@ -10,8 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Training entity
+ * @Author Xiaohui Yu
  * @Date 2023/3/7
  */
 @Data

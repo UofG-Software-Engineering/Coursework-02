@@ -1,8 +1,8 @@
 package uofg.se.group.constant;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Requirement status enum
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 public enum RequirementStatusEnum {

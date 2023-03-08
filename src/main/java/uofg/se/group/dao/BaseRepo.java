@@ -1,24 +1,18 @@
-package uofg.se.group.repo;
+package uofg.se.group.dao;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
-import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.pojo.entity.BaseEntity;
 import uofg.se.group.util.JsonReader;
 import uofg.se.group.util.JsonWriter;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Base repository
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 public abstract class BaseRepo<Entity extends BaseEntity> {

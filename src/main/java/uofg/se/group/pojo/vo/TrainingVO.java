@@ -7,8 +7,8 @@ import lombok.ToString;
 import uofg.se.group.pojo.entity.Person;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Training View Object
+ * @Author Xiaohui Yu
  * @Date 2023/3/7
  */
 @AllArgsConstructor

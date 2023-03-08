@@ -8,8 +8,8 @@ import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Base entity
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Data

@@ -6,14 +6,12 @@ import org.springframework.stereotype.Service;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Staff;
-import uofg.se.group.pojo.entity.StaffSkill;
-import uofg.se.group.repo.PersonRepo;
-import uofg.se.group.repo.SkillRepo;
-import uofg.se.group.repo.StaffSkillRepo;
+import uofg.se.group.dao.PersonRepo;
+import uofg.se.group.dao.StaffSkillRepo;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Person service
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 @Service

@@ -4,11 +4,11 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 import uofg.se.group.pojo.entity.Training;
 import uofg.se.group.pojo.vo.TrainingVO;
-import uofg.se.group.repo.TrainingRepo;
+import uofg.se.group.dao.TrainingRepo;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Training service
+ * @Author Xiaohui Yu
  * @Date 2023/3/7
  */
 @Component

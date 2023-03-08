@@ -4,11 +4,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import uofg.se.group.exception.DataNotFoundException;
 import uofg.se.group.pojo.entity.BaseEntity;
-import uofg.se.group.repo.BaseRepo;
+import uofg.se.group.dao.BaseRepo;
 
 /**
- * @Description
- * @Author Chris
+ * @Description Base service
+ * @Author Xiaohui Yu
  * @Date 2023/2/26
  */
 public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>> {
