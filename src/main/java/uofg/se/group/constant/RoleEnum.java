@@ -15,7 +15,7 @@ public enum RoleEnum {
     STAFF("STAFF"),
     PLACEHOLDER("");
 
-    private String value;
+    private final String value;
 
     RoleEnum(String value) {
         this.value = value;

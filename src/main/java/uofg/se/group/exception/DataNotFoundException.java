@@ -7,7 +7,7 @@ package uofg.se.group.exception;
  */
 public class DataNotFoundException extends RuntimeException {
 
-    public DataNotFoundException(String message) {
-        super(message);
+    public DataNotFoundException(String id) {
+        super("Data not found with id: " + id);
     }
 }

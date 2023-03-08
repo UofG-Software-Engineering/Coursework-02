@@ -9,7 +9,7 @@ import uofg.se.group.constant.RoleEnum;
  */
 public class PermissionErrorException extends RuntimeException {
 
-    public PermissionErrorException(RoleEnum role, String message) {
-        super(message);
+    public PermissionErrorException(RoleEnum role, String personId) {
+        super("Permission error for Person with id: " + personId + " and role: " + role.getValue());
     }
 }
