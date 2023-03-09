@@ -1,3 +1,5 @@
+package uofg.se.group;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

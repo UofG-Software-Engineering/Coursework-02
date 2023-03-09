@@ -1,0 +1,7 @@
+logging:
+  pattern:
+    # Set log pattern
+    console: "%d{HH:mm:ss} %-5level %msg%n"
+  level:
+    # Set log level
+    root: INFO
