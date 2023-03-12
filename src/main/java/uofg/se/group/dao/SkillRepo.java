@@ -31,6 +31,7 @@ public class SkillRepo extends BaseRepo<Skill> {
         return findAll().stream().filter(skill -> skill.getName().contains(name)).collect(Collectors.toList());
     }
     @Override
+    @SuppressWarnings("unchecked")
     public List<Skill> findAll() {
         return (List<Skill>) jsonReader.read(dataSourceFilePath, Skill.class);
     }

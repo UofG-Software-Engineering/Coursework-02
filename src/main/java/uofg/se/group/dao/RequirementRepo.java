@@ -71,6 +71,7 @@ public class RequirementRepo extends BaseRepo<Requirement> {
         save(requirement);
     }
     @Override
+    @SuppressWarnings("unchecked")
     public List<Requirement> findAll() {
         return (List<Requirement>) jsonReader.read(dataSourceFilePath, Requirement.class);
     }

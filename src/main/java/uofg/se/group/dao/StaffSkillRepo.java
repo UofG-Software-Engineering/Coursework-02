@@ -26,6 +26,7 @@ public class StaffSkillRepo extends BaseRepo<StaffSkill> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<StaffSkill> findAll() {
         return (List<StaffSkill>) jsonReader.read(dataSourceFilePath, StaffSkill.class);
     }

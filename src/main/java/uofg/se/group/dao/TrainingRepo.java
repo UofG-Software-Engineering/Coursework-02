@@ -37,6 +37,7 @@ public class TrainingRepo extends BaseRepo<Training>{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Training> findAll() {
         return (List<Training>) jsonReader.read(dataSourceFilePath, Training.class);
     }

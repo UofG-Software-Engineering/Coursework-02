@@ -14,8 +14,6 @@ import uofg.se.group.dao.BaseRepo;
 public abstract class BaseService<T extends BaseEntity, Repo extends BaseRepo<T>> {
 
     @Autowired
-    private T t;
-    @Autowired
     protected Repo repo;
 
     public String save(T entity) {

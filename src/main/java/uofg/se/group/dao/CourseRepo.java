@@ -23,6 +23,7 @@ public class CourseRepo extends BaseRepo<Course> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Course> findAll() {
         return (List<Course>) jsonReader.read(dataSourceFilePath, Course.class);
     }

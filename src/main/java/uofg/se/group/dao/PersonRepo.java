@@ -62,6 +62,7 @@ public class PersonRepo extends BaseRepo<Person> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Person> findAll() {
         return (List<Person>) jsonReader.read(dataSourceFilePath, Person.class);
     }
