@@ -2,6 +2,7 @@ package uofg.se.group.pojo.vo;
 
 import java.util.List;
 import lombok.Builder;
+import lombok.Data;
 import lombok.ToString;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.pojo.entity.Course;
@@ -15,6 +16,7 @@ import uofg.se.group.pojo.entity.Skill;
  */
 @Builder
 @ToString
+@Data
 public class RequirementVO {
 
     private String id;

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import uofg.se.group.Application;
@@ -19,7 +20,7 @@ import uofg.se.group.util.JsonWriter;
  * @Date 2023/3/1
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { Application.class })
+@SpringBootTest
 public class JsonTest {
 
     @Resource
@@ -28,6 +29,7 @@ public class JsonTest {
     private JsonReader jsonReader;
 
     @Test
+    @SuppressWarnings("unchecked")
     public void test() {
         String filePath = "data/Course.json";
         Course course = new Course();

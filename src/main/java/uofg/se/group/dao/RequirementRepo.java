@@ -10,6 +10,7 @@ import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.exception.PermissionErrorException;
 import uofg.se.group.pojo.entity.Requirement;
 import uofg.se.group.pojo.vo.RequirementVO;
+import uofg.se.group.util.RequirementMapper;
 
 /**
  * @Description Teaching requirement repository
@@ -30,7 +31,7 @@ public class RequirementRepo extends BaseRepo<Requirement> {
         super(EntityEnum.Requirement.getDataSourceFilePath());
     }
 
-    public String add(Requirement requirement) {
+    public String save(Requirement requirement) {
         String courseDirectorId = requirement.getCourseDirectorId();
         if (!personRepo.existsByPersonIdAndRole(courseDirectorId, RoleEnum.COURSE_DIRECTOR)) {
             throw new PermissionErrorException(RoleEnum.COURSE_DIRECTOR, courseDirectorId);
@@ -38,16 +39,22 @@ public class RequirementRepo extends BaseRepo<Requirement> {
         if (!courseRepo.existsByCourseIdAndCourseDirectorId(requirement.getCourseId(), courseDirectorId)) {
             throw new PermissionErrorException(RoleEnum.COURSE_DIRECTOR, courseDirectorId);
         }
-        requirement.setStatus(RequirementStatusEnum.PENDING);
+        // Init status
+        if (null == requirement.getStatus()) {
+            requirement.setStatus(RequirementStatusEnum.PENDING);
+        }
 
-        return save(requirement);
+        return super.save(requirement);
     }
     public RequirementVO findOneVO(String requirementId) {
         Requirement requirement = findOne(requirementId);
-        return RequirementVO.builder().id(requirement.getId()).course(courseRepo.findOne(requirement.getCourseId()))
-                .CourseDirector(personRepo.findOne(requirement.getCourseDirectorId()))
-                .staff(personRepo.findOne(requirement.getStaffId()))
-                .skills(skillRepo.findAllById(requirement.getSkillIds())).status(requirement.getStatus()).build();
+        RequirementVO requirementVO = RequirementMapper.INSTANCE.Entity2VO(requirement);
+        requirementVO.setCourse(courseRepo.findOne(requirement.getCourseId()));
+        requirementVO.setCourseDirector(personRepo.findOne(requirement.getCourseDirectorId()));
+        requirementVO.setStaff(personRepo.findOne(requirement.getStaffId()));
+        requirementVO.setSkills(skillRepo.findAllById(requirement.getSkillIds()));
+
+        return requirementVO;
     }
 
     public List<Requirement> findAllByStatus(RequirementStatusEnum status) {

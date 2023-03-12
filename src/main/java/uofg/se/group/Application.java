@@ -16,9 +16,6 @@ import uofg.se.group.constant.Constant;
 import uofg.se.group.constant.RequirementStatusEnum;
 import uofg.se.group.constant.RoleEnum;
 import uofg.se.group.dao.CourseRepo;
-import uofg.se.group.dao.PersonRepo;
-import uofg.se.group.dao.SkillRepo;
-import uofg.se.group.dao.StaffSkillRepo;
 import uofg.se.group.pojo.entity.Course;
 import uofg.se.group.pojo.entity.Person;
 import uofg.se.group.pojo.entity.Requirement;
@@ -61,7 +58,7 @@ public class Application implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
         init();
-        matchSuitableStaff();
+        addTrainingStaff();
     }
 
     public void init() {
@@ -173,7 +170,7 @@ public class Application implements ApplicationRunner {
         log.info("requirementVO: {}", requirementVO);
     }
 
-    public void addTraining() {
+    public void addTrainingStaff() {
         // Prepare required data
         List<String> staffIds = personService.findAllByRole(RoleEnum.STAFF).stream().map(Person::getId).collect(Collectors.toList());
         Training training = trainingService.findAll().get(0);
